@@ -106,19 +106,19 @@ class App extends Component {
           The app will utilize the PrimeReact UI library.
         </p>
          <div className="ui-g">
-           <div className="ui-g-6">
-            <AppDebtComp></AppDebtComp>
+           <div className="ui-g-6 ui-g-nopad">
+              <div className="ui-g-12">
+                <AppDebtComp></AppDebtComp>
+              </div>
+              <div className="ui-g-12">
+                <AppExpComp></AppExpComp>
+              </div>
            </div>
-        </div>
-        <div className="ui-g">
-          <div className="ui-g-6">
-            <AppExpComp></AppExpComp>
-          </div>
-        </div>
-        <div className="ui-g">
-          <div className="ui-g-6">
-            <AppStatusComp></AppStatusComp>
-          </div>
+           <div className="ui-g-6 ui-g-nopad">
+              <div className="ui-g-12">
+                <AppStatusComp></AppStatusComp>
+              </div>
+           </div>
         </div>
       </div>
     : <AppLogin checkUser={this.handleLogin}></AppLogin>
