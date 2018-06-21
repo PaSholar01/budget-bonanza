@@ -6,7 +6,9 @@
     "fsevents": "*"
   },
   "dependencies": {
+    "chart.js": "^2.7.1",
     "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
     "primeicons": "^1.0.0-beta.9",
     "primereact": "^1.6.2",
     "react": "^16.4.1",

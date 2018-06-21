@@ -4,6 +4,10 @@ import './App.css';
 // import ShowAllies from './ShowAllies.js';
 // import RemoveAlly from './RemoveAlly.js';
 // import AddAlly from './AddAlly.js';
+import AppExpComp from './app-living-expense-component.js';
+import AppDebtComp from './app-debt-component.js';
+import AppStatusComp from './app-budget-status-component.js';
+import AppLogin from './app-login-component.js';
 import 'primereact/resources/themes/omega/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -12,14 +16,39 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      isLoggedIn: false,
+      users: [
+        {
+          username: 'SholarFam',
+          password: 'sholar540'
+        }
+      ]
       // username: 'pushar540',
       // house: 'Sholar',
       // allies: ['Cooke', 'Brun', 'Coheleach', 'Degrella']
     }
+    this.handleLogin = this.handleLogin.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
     // this.handleNameChange = this.handleNameChange.bind(this)
     // this.handleHouseChange = this.handleHouseChange.bind(this)
     // this.addAlly = this.handleAddAlly.bind(this)
     // this.removeAlly = this.handleRemoveAlly.bind(this)
+  }
+  handleLogin(user) {
+    this.state.users.forEach((item) => {
+      console.log(item);
+      console.log(user);
+      if( user.password === item.password && user.username === item.username) {
+        this.setState({
+            isLoggedIn: true
+        })
+      }
+    }); 
+  }
+  handleLogout() {
+    this.setState({
+      isLoggedIn: false
+    })
   }
   // handleNameChange(e) {
   //   this.setState({
@@ -42,11 +71,12 @@ class App extends Component {
   //   }))
   // }
   render() {
-    return (
+    return ( this.state.isLoggedIn ? 
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Budget Tracker</h1>
+          <button onClick={this.handleLogout}>Logout</button>
         </header>
         <p className="App-intro">
         <h1>Requirements</h1>
@@ -75,8 +105,23 @@ class App extends Component {
         <p>
           The app will utilize the PrimeReact UI library.
         </p>
-
+         <div className="ui-g">
+           <div className="ui-g-6">
+            <AppDebtComp></AppDebtComp>
+           </div>
+        </div>
+        <div className="ui-g">
+          <div className="ui-g-6">
+            <AppExpComp></AppExpComp>
+          </div>
+        </div>
+        <div className="ui-g">
+          <div className="ui-g-6">
+            <AppStatusComp></AppStatusComp>
+          </div>
+        </div>
       </div>
+    : <AppLogin checkUser={this.handleLogin}></AppLogin>
     );
   }
 }
@@ -85,7 +130,7 @@ export default App;
 
 
 
- // <p className="App-input">
+ // <p classNameName="App-input">
         //   <div>
         //     Change Your username:
         //     <input type="text" value={this.state.username} onChange={this.handleNameChange}/>
