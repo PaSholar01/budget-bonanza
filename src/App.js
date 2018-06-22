@@ -23,21 +23,12 @@ class App extends Component {
           password: 'sholar540'
         }
       ]
-      // username: 'pushar540',
-      // house: 'Sholar',
-      // allies: ['Cooke', 'Brun', 'Coheleach', 'Degrella']
     }
     this.handleLogin = this.handleLogin.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
-    // this.handleNameChange = this.handleNameChange.bind(this)
-    // this.handleHouseChange = this.handleHouseChange.bind(this)
-    // this.addAlly = this.handleAddAlly.bind(this)
-    // this.removeAlly = this.handleRemoveAlly.bind(this)
   }
   handleLogin(user) {
     this.state.users.forEach((item) => {
-      console.log(item);
-      console.log(user);
       if( user.password === item.password && user.username === item.username) {
         this.setState({
             isLoggedIn: true
@@ -50,26 +41,6 @@ class App extends Component {
       isLoggedIn: false
     })
   }
-  // handleNameChange(e) {
-  //   this.setState({
-  //     username: e.target.value
-  //   })
-  // }
-  // handleHouseChange(e) {
-  //   this.setState({
-  //     house: e.target.value
-  //   })
-  // }
-  // handleAddAlly(ally) {
-  //   this.setState((state) => ({
-  //     allies: state.allies.concat([ally])
-  //   }))
-  // }
-  // handleRemoveAlly(ally) {
-  //   this.setState((state) => ({
-  //     allies: state.allies.filter((name) => name !== ally)
-  //   }))
-  // }
   render() {
     return ( this.state.isLoggedIn ? 
       <div className="App">
@@ -127,30 +98,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
- // <p classNameName="App-input">
-        //   <div>
-        //     Change Your username:
-        //     <input type="text" value={this.state.username} onChange={this.handleNameChange}/>
-        //   </div>
-        //   <div>
-        //     Change Your house:
-        //     <input type="text" value={this.state.house} onChange={this.handleHouseChange}/>
-        //   </div>
-        // </p>
-        // <hr/>
-        // <hr/>
-        // <hr/>
-        // <hr/>
-        // <hr/>
-        // <h4>Testing components below</h4>
-        // <hr/>
-        // <hr/>
-        // <hr/>
-        // <hr/>
-        // <hr/>
-        // <ShowAllies allyNames={this.state.allies} />
-        // <AddAlly addNew={this.addAlly}/>
-        // <RemoveAlly removeOld={this.removeAlly} allyNames={this.state.allies}/>
